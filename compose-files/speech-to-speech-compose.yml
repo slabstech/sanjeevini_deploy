@@ -36,21 +36,18 @@ services:
       - WHISPER__MODEL=Systran/faster-distil-whisper-small.en
       - UVICORN_HOST=0.0.0.0
       - UVICORN_PORT=11800
-  tts:
-    image: ghcr.io/coqui-ai/tts:latest
-    entrypoint: python3
-    command: TTS/server/server.py --model_name tts_models/en/ljspeech/tacotron2-DDC --use_cuda true
+  parler-tts-server:
+    image: slabstech/parler-tts-server
+    volumes:
+      - ~/.cache/huggingface:/root/.cache/huggingface
+    restart: unless-stopped
+    ports:
+      - 12800:12800
     deploy:
       resources:
         reservations:
           devices:
-            - driver: nvidia
-              device_ids: ['0']
-              capabilities: [gpu]
-    volumes:
-      - ./volumes/tts:/root/.local/share/tts
-    ports:
-      - "5002:5002"
+            - capabilities: ["gpu"]
 networks:
   app-network:
     driver: bridge
