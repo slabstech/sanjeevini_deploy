@@ -31,7 +31,7 @@ Before you begin, make sure you have the following:
 ### Frontend
 
 1. In your GitHub repository, add a repository secret for Huggingface Spaces:
-   - `VITE_HF_SPACES_URL=https://Your-Spaces-URL/api/v1`
+   - `VITE_SANJEEVINI_BACKEND_APP_API_URL=https://Your-Spaces-URL/api/v1`
 2. Navigate to the `frontend` directory:
    - `cd frontend`
 3. Build the frontend:
@@ -40,18 +40,6 @@ Before you begin, make sure you have the following:
    - `npm run deploy`
 
 ## Local Deployment with GPU
-
-### With Docker
-
-1. To deploy the application:
-  - Update Environment Variables for Docker 
-    - Copy .env.prod.sample as .env.prod
-    - If required, change the database parameters
-
-  - Start the Containers 
-   - `docker compose -f docker-compose.prod.yml up`
-2. To deploy the inference:
-   - `docker compose -f inference-compose.yml up -d`
 
 ### Without Docker
 
@@ -72,14 +60,38 @@ Before you begin, make sure you have the following:
    - Run the server:
      - `python manage.py runserver`
 
+
+### With Docker
+
+1. To deploy the application:
+  - Update Environment Variables for Docker 
+    - Copy .env.prod.sample as .env.prod
+    - If required, change the database parameters
+
+  - Start the Containers 
+   - `docker compose -f docker-compose.prod.yml up`
+2. To deploy the inference:
+   - `docker compose -f inference-compose.yml up -d`
+
+
+### Inference
+cd compose-files
+
+1. For Text LLM only
+  - docker compose -f llm-compose.yml up -d
+
+2. For Speech ASR only
+  - docker compose -f speech-asr-compose.yml up -d
+
+3. For Speech ASR + LLM
+  - docker compose -f speech-llm-compose.yml up -d
+
+4. For Speech ASR + LLM + TTS
+  - docker compose -f speech-to-speech-compose.yml up -d
+
 ## Speech AI (GPU Required)
 
-- **Note:** This section is a work in progress.
-- To deploy the speech AI component, navigate to the `inference/speech` directory:
-  - `cd inference/speech`
 - Download the model:
   - `huggingface-cli download Systran/faster-distil-whisper-small.en`
-- Deploy the speech AI component:
-  - `docker compose -f docker-compose.yml up -d`
 
 Follow these steps to deploy the speech AI component, which requires a GPU for optimal performance. Please note that this section is still under development.
