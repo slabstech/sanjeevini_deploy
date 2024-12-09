@@ -16,7 +16,7 @@ services:
     environment:
       - WHISPER__MODEL=ARTPARK-IISc/whisper-small-vaani-kannada
       - UVICORN_HOST=0.0.0.0
-      - UVICORN_PORT=11802
+      - UVICORN_PORT=11800
 volumes:
   hugging_face_cache:
     driver: local
