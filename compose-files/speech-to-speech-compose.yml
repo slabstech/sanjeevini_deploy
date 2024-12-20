@@ -33,7 +33,7 @@ services:
               device_ids: ['0']
               capabilities: [gpu]
     environment:
-      - WHISPER__MODEL=Systran/faster-distil-whisper-small.en
+      - WHISPER__MODEL=Systran/faster-distil-whisper-large-v3
       - UVICORN_HOST=0.0.0.0
       - UVICORN_PORT=11800
   parler-tts-server:

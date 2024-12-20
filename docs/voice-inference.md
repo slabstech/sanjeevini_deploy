@@ -5,6 +5,7 @@ Voice Integrations -
 
     - huggingface-cli download Systran/faster-distil-whisper-small.en
 
+    -  huggingface-cli download Systran/faster-distil-whisper-large-v3
 
 
 
