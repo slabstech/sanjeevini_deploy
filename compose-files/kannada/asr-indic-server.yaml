@@ -1,4 +1,3 @@
-services:
   asr-indic-server:
     image: slabstech/asr-indic-server
     volumes:
@@ -6,7 +5,7 @@ services:
     ports:
       - 8000:8000
     environment:
-      - MODEL=ARTPARK-IISc/whisper-medium-vaani-kannada
+      - LANGUAGE=kannada
     deploy:
       resources:
         reservations:

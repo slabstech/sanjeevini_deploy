@@ -1,0 +1,70 @@
+version: '3.8'
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    pull_policy: always
+    ports:
+      - 11434:11434
+    networks:
+      - app-network
+    volumes:
+      - ~/ollama/ollama:/root/.ollama
+      - hugging_face_cache:/root/.cache/huggingface
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ['0']
+              capabilities: [gpu]
+
+  asr-indic-server:
+    image: slabstech/asr-indic-server
+    pull_policy: always
+    ports:
+      - 8100:8100
+    environment:
+      - LANGUAGE=kannada
+    networks:
+      - app-network
+    volumes:
+      - hugging_face_cache:/root/.cache/huggingface
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ['0']
+              capabilities: [gpu]
+
+  parler-tts-server:
+    image: slabstech/parler-tts-server
+    pull_policy: always
+    environment:
+      - MODEL=ai4bharat/indic-parler-tts
+    ports:
+      - 8200:8200
+    networks:
+      - app-network
+    volumes:
+      - hugging_face_cache:/root/.cache/huggingface
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ['0']
+              capabilities: [gpu]
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  hugging_face_cache:
+    driver: local
+    driver_opts:
+      type: none
+      device: ~/.cache/huggingface
+      o: bind

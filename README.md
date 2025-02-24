@@ -1,6 +1,21 @@
 # sanjeevini_deploy
 Deployment for Sanjeevini AI Health App
 
+
+- kannada
+  - Voice Mode - Speech to Speech 
+    - docker compose -f compose-files/kannada/indic-speech-to-speech-compose.yml up -d 
+
+  - TTS - localhost:8200/docs 
+  - ASR - localhost:8100/docs
+  - END - localhost:8500/docs
+- english
+  - Voice Mode - Speech to Speech 
+    - docker compose -f compose-files/english/speech-to-speech-compose.yml up -d
+
+
+
+
 - Requirements
     - Docker
     - CUDA
