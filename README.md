@@ -28,3 +28,13 @@ Deployment for Sanjeevini AI Health App
 <a href="https://www.youtube.com/watch?v=KHK_jaB4D0g" target="_blank">
   <img src="https://img.youtube.com/vi/KHK_jaB4D0g/0.jpg" alt="Watch the video">
 </a>
+
+
+Automatic Speech Recognition - Kannada 
+
+
+
+
+<a href="https://youtu.be/F0Mo0zjyysM" target="_blank">
+  <img src="https://img.youtube.com/vi/F0Mo0zjyysM/0.jpg" alt="Watch the video">
+</a>
