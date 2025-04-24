@@ -1,0 +1,16 @@
+services:
+  parler-tts-server:
+    image: slabstech/parler-tts-server
+    environment:
+      - MODEL=ai4bharat/indic-parler-tts
+    volumes:
+      - ~/.cache/huggingface:/root/.cache/huggingface
+    ports:
+      - 8000:8000
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ['0']
+              capabilities: [gpu]

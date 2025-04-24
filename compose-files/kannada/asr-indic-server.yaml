@@ -1,0 +1,15 @@
+  asr-indic-server:
+    image: slabstech/asr-indic-server
+    volumes:
+      - ~/.cache/huggingface:/root/.cache/huggingface
+    ports:
+      - 8000:8000
+    environment:
+      - LANGUAGE=kannada
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ['0']
+              capabilities: [gpu]
